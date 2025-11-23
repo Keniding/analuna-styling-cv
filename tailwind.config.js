@@ -8,55 +8,65 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#14B8A6',
-          50: '#f0fdfa',
-          100: '#ccfbf1',
-          200: '#99f6e4',
-          300: '#5eead4',
-          400: '#2dd4bf',
-          500: '#14B8A6',
-          600: '#0d9488',
-          700: '#0f766e',
-          800: '#115e59',
-          900: '#134e4a',
-          950: '#042f2e',
-          hover: '#0d9488',
-          active: '#0f766e'
+          DEFAULT: '#E8B4BC', // Rose gold suave
+          50: '#fef7f8',
+          100: '#fdeef0',
+          200: '#fcdde3',
+          300: '#fac2cc',
+          400: '#f69baa',
+          500: '#E8B4BC', // Rose gold principal
+          600: '#d88a9a',
+          700: '#c26577',
+          800: '#a04d5f',
+          900: '#864252',
+          950: '#4a2127',
+          hover: '#f69baa',
+          active: '#d88a9a'
         },
         accent: {
-          DEFAULT: '#FFBB00',
-          50: '#fffbeb',
-          100: '#fef3c7',
-          200: '#fde68a',
-          300: '#fcd34d',
-          400: '#fbbf24',
-          500: '#FFBB00',
-          600: '#d97706',
-          700: '#b45309',
-          800: '#92400e',
-          900: '#78350f',
-          950: '#451a03',
-          hover: '#fbbf24',
-          active: '#d97706'
+          DEFAULT: '#C9A88A', // Dorado champagne suave
+          50: '#faf8f5',
+          100: '#f5f0e8',
+          200: '#ebe0d0',
+          300: '#dcc9af',
+          400: '#C9A88A', // Dorado champagne
+          500: '#b8916f',
+          600: '#a67d5f',
+          700: '#8a6750',
+          800: '#715546',
+          900: '#5d473b',
+          950: '#31241e',
+          hover: '#dcc9af',
+          active: '#b8916f'
         },
         secondary: {
-          DEFAULT: '#1e293b',
-          50: '#f8fafc',
-          100: '#f1f5f9',
-          200: '#e2e8f0',
-          300: '#cbd5e1',
-          400: '#94a3b8',
-          500: '#64748b',
-          600: '#475569',
-          700: '#334155',
-          800: '#1e293b',
-          900: '#0f172a',
-          950: '#020617'
+          DEFAULT: '#F5E6E8', // Rosa pálido cremoso
+          50: '#fefcfd',
+          100: '#fef9fa',
+          200: '#fdf3f5',
+          300: '#fbe8eb',
+          400: '#F5E6E8', // Rosa pálido principal
+          500: '#e8c9cd',
+          600: '#d5a6ac',
+          700: '#be8389',
+          800: '#9e6a6f',
+          900: '#855a5e',
+          950: '#4a2f32'
+        },
+        gold: {
+          DEFAULT: '#D4AF7A', // Oro rosado metálico
+          light: '#E8C9A0',
+          dark: '#B8956A'
         }
       },
       fontFamily: {
         'montserrat': ['Montserrat', 'sans-serif'],
+        'playfair': ['Playfair Display', 'serif'],
         'sans': ['Montserrat', 'ui-sans-serif', 'system-ui']
+      },
+      backgroundImage: {
+        'rose-gold-gradient': 'linear-gradient(135deg, #E8B4BC 0%, #D4AF7A 50%, #F5E6E8 100%)',
+        'rose-gold-shimmer': 'linear-gradient(90deg, #E8B4BC 0%, #F5E6E8 25%, #D4AF7A 50%, #F5E6E8 75%, #E8B4BC 100%)',
       }
     },
   },

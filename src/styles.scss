@@ -1,1 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+@use 'tailwindcss/base';
+@use 'tailwindcss/components';
+@use 'tailwindcss/utilities';
+// @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  // font-family: 'Poppins', sans-serif;
+}
+
+:root {
+  --sidebar-width: 280px;
+}
+
+.theme-switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+html, body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.app-dark {
+  color-scheme: dark;
+}
+
+.app-light {
+  color-scheme: light;
+}
