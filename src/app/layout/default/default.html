@@ -1,53 +1,39 @@
-<div class="min-h-screen flex flex-col bg-surface-50 dark:bg-surface-950 relative font-sans text-surface-700 dark:text-surface-200">
+<div class="min-h-screen flex flex-col bg-surface-50 dark:bg-surface-950">
 
   <!-- Header Superior -->
   <app-navbar />
 
-  <!-- Menú Flotante a la Derecha (Right Floating Sidebar) -->
-  <nav class="fixed right-4 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col gap-6 items-center">
-    @for (item of menuItems; track item.label) {
-      <a
-        [routerLink]="item.route"
-        routerLinkActive="!text-primary-500 scale-110"
-        [routerLinkActiveOptions]="{exact: item.route === '/'}"
-        #rla="routerLinkActive"
-        class="group relative flex items-center justify-center w-10 h-10 text-surface-400 hover:text-primary-500 transition-all duration-300 hover:scale-110 cursor-pointer"
-      >
-        <!-- Icono -->
-        <i [class]="item.icon" class="text-xl md:text-2xl"></i>
+  <!-- SpeedDial Flotante (Desktop) - Componente PrimeNG -->
+  <p-speeddial
+    [model]="speedDialItems"
+    direction="down"
+    [style]="{'position': 'fixed', 'right': '1rem', 'top': '50%', 'transform': 'translateY(-50%)', 'z-index': '50'}"
+    [className]="'hidden md:flex'"
+    buttonClassName="p-button-rounded p-button-outlined"
+    [showIcon]="'pi pi-bars'"
+    [hideIcon]="'pi pi-times'"
+  />
 
-        <!-- Tooltip (Nombre de la sección) -->
-        <span class="absolute right-full mr-4 py-1 px-2 rounded bg-surface-900 dark:bg-surface-100 text-surface-0 dark:text-surface-900 text-xs font-medium opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0 transition-all duration-300 whitespace-nowrap pointer-events-none shadow-lg">
-          {{ item.label }}
-          <!-- Flechita del tooltip -->
-          <span class="absolute top-1/2 right-[-4px] -mt-1 border-4 border-transparent border-l-surface-900 dark:border-l-surface-100"></span>
-        </span>
-
-        <!-- Indicador de activo (punto) -->
-        <span class="absolute -right-2 top-1/2 -translate-y-1/2 w-1 h-1 rounded-full bg-primary-500 opacity-0 transition-opacity duration-300"
-              [class.opacity-100]="rla.isActive">
-        </span>
-      </a>
-    }
-  </nav>
-
-  <!-- Navegación móvil (Bottom Bar para celulares) -->
-  <nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface-0/90 dark:bg-surface-900/90 backdrop-blur-md border-t border-surface-200 dark:border-surface-800 z-50 px-6 py-3 flex justify-between items-center">
-    @for (item of menuItems; track item.label) {
-      <a
-        [routerLink]="item.route"
-        routerLinkActive="text-primary-500"
-        [routerLinkActiveOptions]="{exact: item.route === '/'}"
-        class="flex flex-col items-center gap-1 text-surface-400 transition-colors"
-      >
-        <i [class]="item.icon" class="text-xl"></i>
-        <span class="text-[10px] font-medium">{{ item.label }}</span>
-      </a>
-    }
-  </nav>
+  <!-- Navegación móvil (Bottom Bar) usando Dock -->
+  <div class="md:hidden fixed bottom-0 left-0 w-full bg-surface-0/90 dark:bg-surface-900/90 backdrop-blur-md border-t border-surface-200 dark:border-surface-800 z-50">
+    <div class="flex justify-around items-center px-4 py-3">
+      @for (item of menuItems; track item.label) {
+        <a
+          [routerLink]="item.route"
+          routerLinkActive="text-primary-500"
+          [routerLinkActiveOptions]="{exact: item.route === '/'}"
+          class="flex flex-col items-center gap-1 text-surface-400 transition-colors min-w-[60px]"
+          pRipple
+        >
+          <i [class]="item.icon" class="text-xl"></i>
+          <span class="text-[10px] font-medium">{{ item.label }}</span>
+        </a>
+      }
+    </div>
+  </div>
 
   <!-- Contenido Principal -->
-  <main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:pr-20 transition-all duration-300">
+  <main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:pr-20 pb-24 md:pb-8">
     <router-outlet />
   </main>
 
