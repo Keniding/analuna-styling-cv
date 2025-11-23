@@ -72,4 +72,8 @@ export class Navbar {
       routerLink: '/contacto'
     }
   ];
+
+  onReservarClick() {
+    globalThis.dispatchEvent(new CustomEvent('open-booking-dialog'));
+  }
 }

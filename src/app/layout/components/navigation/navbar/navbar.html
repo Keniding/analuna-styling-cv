@@ -1,4 +1,4 @@
-<p-menubar [model]="items" styleClass="border-none border-b border-surface-200 dark:border-surface-800 rounded-none">
+<p-menubar [model]="items" class="border-none border-b border-surface-200 dark:border-surface-800 rounded-none">
   <ng-template #start>
     <div class="flex items-center gap-2 mr-4">
       <svg width="33" height="35" viewBox="0 0 33 35" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-8 h-8">
@@ -22,6 +22,7 @@
         icon="pi pi-calendar"
         [rounded]="true"
         styleClass="hidden sm:inline-flex"
+        (onClick)="onReservarClick()"
       />
       <p-button
         icon="pi pi-calendar"
@@ -29,6 +30,7 @@
         styleClass="sm:hidden"
         severity="secondary"
         [text]="true"
+        (onClick)="onReservarClick()"
       />
     </div>
   </ng-template>

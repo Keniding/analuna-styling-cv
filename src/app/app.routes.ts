@@ -5,25 +5,44 @@ import { Default } from '@layout/default/default';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'me',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {
-    path: 'me',
+    path: '',
     component: Default,
-    title: environment.titles.main,
     children: [
       {
-        path: '',
-        redirectTo: 'dashboard',
-        pathMatch: 'full'
+        path: 'home',
+        loadComponent: () => import('./features/home/home').then(m => m.Home),
+        title: environment.titles.main
       },
-      // Dashboard
+      /*
+      {
+        path: 'servicios',
+        loadComponent: () => import('./features/servicios/servicios').then(m => m.Servicios),
+        title: 'Servicios - ' + environment.titles.main
+      },
+      {
+        path: 'portafolio',
+        loadComponent: () => import('./features/portafolio/portafolio').then(m => m.Portafolio),
+        title: 'Portafolio - ' + environment.titles.main
+      },
+      {
+        path: 'sobre-mi',
+        loadComponent: () => import('./features/sobre-mi/sobre-mi').then(m => m.SobreMi),
+        title: 'Sobre Mí - ' + environment.titles.main
+      },
+      {
+        path: 'contacto',
+        loadComponent: () => import('./features/contacto/contacto').then(m => m.Contacto),
+        title: 'Contacto - ' + environment.titles.main
+      }
+       */
     ]
   },
-  // 404 - Not Found
   {
     path: '**',
-    redirectTo: 'api/inicio/not-found'
+    redirectTo: 'home'
   }
 ];

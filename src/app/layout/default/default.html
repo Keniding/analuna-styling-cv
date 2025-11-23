@@ -3,7 +3,7 @@
   <!-- Header Superior -->
   <app-navbar />
 
-  <!-- SpeedDial Flotante (Desktop) - Componente PrimeNG -->
+  <!-- SpeedDial Flotante (Desktop) -->
   <p-speeddial
     [model]="speedDialItems"
     direction="down"
@@ -14,7 +14,7 @@
     [hideIcon]="'pi pi-times'"
   />
 
-  <!-- Navegación móvil (Bottom Bar) usando Dock -->
+  <!-- Navegación móvil (Bottom Bar) -->
   <div class="md:hidden fixed bottom-0 left-0 w-full bg-surface-0/90 dark:bg-surface-900/90 backdrop-blur-md border-t border-surface-200 dark:border-surface-800 z-50">
     <div class="flex justify-around items-center px-4 py-3">
       @for (item of menuItems; track item.label) {
@@ -32,8 +32,7 @@
     </div>
   </div>
 
-  <!-- Contenido Principal -->
-  <main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:pr-20 pb-24 md:pb-8">
+  <main class="flex-grow w-full pb-20 md:pb-0">
     <router-outlet />
   </main>
 

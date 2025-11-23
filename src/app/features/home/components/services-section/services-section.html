@@ -1,0 +1,89 @@
+<section class="py-20 bg-surface-50 dark:bg-surface-950">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Header -->
+    <div
+      class="text-center mb-16"
+      pAnimateOnScroll
+      enterClass="fadein"
+    >
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-sm font-medium mb-4">
+        <i class="pi pi-sparkles"></i>
+        <span>Nuestros Servicios</span>
+      </div>
+
+      <h2 class="text-3xl sm:text-4xl font-bold text-surface-900 dark:text-surface-0 mb-4">
+        Tratamientos Especializados
+      </h2>
+
+      <p class="text-lg text-surface-600 dark:text-surface-300 max-w-2xl mx-auto">
+        Descubre nuestra amplia gama de servicios diseñados para realzar tu belleza y bienestar
+      </p>
+    </div>
+
+    <!-- Grid de servicios -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      @for (service of services; track service.title; let idx = $index) {
+        <div
+          pAnimateOnScroll
+          enterClass="zoomin"
+        >
+          <p-card styleClass="h-full hover:shadow-xl transition-shadow duration-300">
+            <ng-template #header>
+              <div class="relative h-48 overflow-hidden">
+                <img
+                  [src]="service.image"
+                  [alt]="service.title"
+                  class="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                />
+                <div class="absolute top-4 left-4">
+                  <p-tag [value]="service.tag" [severity]="service.tagSeverity" />
+                </div>
+              </div>
+            </ng-template>
+
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
+                <i [class]="service.icon" class="text-primary-500 text-xl"></i>
+              </div>
+              <h3 class="text-xl font-bold text-surface-900 dark:text-surface-0">{{ service.title }}</h3>
+            </div>
+
+            <p class="text-surface-600 dark:text-surface-400 mb-4">
+              {{ service.description }}
+            </p>
+
+            <ul class="space-y-2 mb-6">
+              @for (feature of service.features; track feature) {
+                <li class="flex items-center gap-2 text-sm text-surface-600 dark:text-surface-400">
+                  <i class="pi pi-check text-primary-500"></i>
+                  <span>{{ feature }}</span>
+                </li>
+              }
+            </ul>
+
+            <div class="flex items-center justify-between pt-4 border-t border-surface-200 dark:border-surface-700">
+              <div class="text-2xl font-bold text-primary-500">{{ service.price }}</div>
+              <p-button
+                label="Reservar"
+                icon="pi pi-calendar"
+                [text]="true"
+              />
+            </div>
+          </p-card>
+        </div>
+      }
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center mt-12">
+      <p-button
+        label="Ver todos los servicios"
+        icon="pi pi-arrow-right"
+        iconPos="right"
+        size="large"
+        [outlined]="true"
+      />
+    </div>
+  </div>
+</section>

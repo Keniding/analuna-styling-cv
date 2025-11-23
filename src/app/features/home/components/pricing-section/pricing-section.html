@@ -1,0 +1,147 @@
+<section class="py-20 bg-surface-50 dark:bg-surface-950">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Header -->
+    <div
+      class="text-center mb-16"
+      pAnimateOnScroll
+      enterClass="fadein"
+    >
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-sm font-medium mb-4">
+        <i class="pi pi-tag"></i>
+        <span>Precios</span>
+      </div>
+
+      <h2 class="text-3xl sm:text-4xl font-bold text-surface-900 dark:text-surface-0 mb-4">
+        Planes y Paquetes
+      </h2>
+
+      <p class="text-lg text-surface-600 dark:text-surface-300 max-w-2xl mx-auto">
+        Elige el plan que mejor se adapte a tus necesidades y ahorra con nuestros paquetes mensuales
+      </p>
+    </div>
+
+    <!-- Grid de planes -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+      @for (plan of plans; track plan.name; let idx = $index) {
+        <div
+          pAnimateOnScroll
+          enterClass="fadeinup"
+          [class]="plan.highlighted ? 'md:-mt-4' : ''"
+        >
+          <div
+            [class]="'relative rounded-3xl p-8 h-full flex flex-col transition-all duration-300 ' +
+            (plan.highlighted
+              ? 'bg-gradient-to-br from-primary-500 to-primary-600 text-white shadow-2xl scale-105'
+              : 'bg-surface-0 dark:bg-surface-900 hover:shadow-xl')"
+          >
+            <!-- Badge -->
+            @if (plan.badge) {
+              <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+                <p-badge
+                  [value]="plan.badge"
+                  [severity]="plan.badgeSeverity"
+                  styleClass="text-sm px-4 py-2"
+                />
+              </div>
+            }
+
+            <!-- Icono -->
+            <div [class]="'w-16 h-16 rounded-2xl flex items-center justify-center mb-6 ' +
+              (plan.highlighted
+                ? 'bg-white/20'
+                : 'bg-primary-100 dark:bg-primary-900/30')">
+              <i [class]="plan.icon + ' text-3xl ' + (plan.highlighted ? 'text-white' : 'text-primary-500')"></i>
+            </div>
+
+            <!-- Nombre y descripción -->
+            <h3 [class]="'text-2xl font-bold mb-2 ' + (plan.highlighted ? 'text-white' : 'text-surface-900 dark:text-surface-0')">
+              {{ plan.name }}
+            </h3>
+            <p [class]="'text-sm mb-6 ' + (plan.highlighted ? 'text-white/90' : 'text-surface-600 dark:text-surface-400')">
+              {{ plan.description }}
+            </p>
+
+            <!-- Precio -->
+            <div class="mb-8">
+              <div class="flex items-baseline gap-2">
+                <span [class]="'text-sm ' + (plan.highlighted ? 'text-white/90' : 'text-surface-600 dark:text-surface-400')">S/.</span>
+                <span [class]="'text-5xl font-bold ' + (plan.highlighted ? 'text-white' : 'text-surface-900 dark:text-surface-0')">
+                  {{ plan.price }}
+                </span>
+              </div>
+              <p [class]="'text-sm mt-1 ' + (plan.highlighted ? 'text-white/90' : 'text-surface-600 dark:text-surface-400')">
+                {{ plan.period }}
+              </p>
+            </div>
+
+            <!-- Features -->
+            <ul class="space-y-3 mb-8 flex-grow">
+              @for (feature of plan.features; track feature) {
+                <li class="flex items-start gap-3">
+                  <i [class]="'pi pi-check flex-shrink-0 mt-1 ' + (plan.highlighted ? 'text-white' : 'text-primary-500')"></i>
+                  <span [class]="'text-sm ' + (plan.highlighted ? 'text-white/95' : 'text-surface-700 dark:text-surface-300')">
+                    {{ feature }}
+                  </span>
+                </li>
+              }
+            </ul>
+
+            <!-- Botón -->
+            <p-button
+              [label]="plan.buttonLabel"
+              icon="pi pi-arrow-right"
+              iconPos="right"
+              [outlined]="!plan.highlighted"
+              [severity]="plan.highlighted ? 'contrast' : 'primary'"
+              size="large"
+              styleClass="w-full"
+            />
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Servicios individuales -->
+    <div
+      pAnimateOnScroll
+      enterClass="fadeinup"
+    >
+      <div class="bg-surface-0 dark:bg-surface-900 rounded-3xl p-8 shadow-lg">
+        <div class="text-center mb-8">
+          <h3 class="text-2xl font-bold text-surface-900 dark:text-surface-0 mb-2">
+            Servicios Individuales
+          </h3>
+          <p class="text-surface-600 dark:text-surface-400">
+            También puedes reservar servicios por separado
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+          @for (service of singleServices; track service.name) {
+            <div class="flex items-center justify-between p-4 rounded-xl bg-surface-50 dark:bg-surface-800 hover:bg-surface-100 dark:hover:bg-surface-700 transition-colors">
+              <span class="text-sm font-medium text-surface-900 dark:text-surface-0">{{ service.name }}</span>
+              <span class="text-sm font-bold text-primary-500">{{ service.price }}</span>
+            </div>
+          }
+        </div>
+
+        <div class="text-center mt-8">
+          <p-button
+            label="Ver lista completa de precios"
+            icon="pi pi-list"
+            [text]="true"
+            size="large"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Nota informativa -->
+    <div class="mt-12 text-center">
+      <p class="text-sm text-surface-600 dark:text-surface-400">
+        * Los precios pueden variar según el tipo de tratamiento específico. Consulta por promociones especiales.
+      </p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,101 @@
+<section class="py-20 bg-surface-0 dark:bg-surface-900">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Header -->
+    <div
+      class="text-center mb-16"
+      pAnimateOnScroll
+      enterClass="fadein"
+    >
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-sm font-medium mb-4">
+        <i class="pi pi-comments"></i>
+        <span>Testimonios</span>
+      </div>
+
+      <h2 class="text-3xl sm:text-4xl font-bold text-surface-900 dark:text-surface-0 mb-4">
+        Lo Que Dicen Nuestras Clientas
+      </h2>
+
+      <p class="text-lg text-surface-600 dark:text-surface-300 max-w-2xl mx-auto">
+        La satisfacción de nuestras clientas es nuestra mejor carta de presentación
+      </p>
+    </div>
+
+    <!-- Carousel de testimonios -->
+    <div
+      pAnimateOnScroll
+      enterClass="fadeinup"
+    >
+      <p-carousel
+        [value]="testimonials"
+        [numVisible]="3"
+        [numScroll]="1"
+        [circular]="true"
+        [autoplayInterval]="5000"
+        [responsiveOptions]="responsiveOptions"
+      >
+        <ng-template #item let-testimonial>
+          <div class="p-4">
+            <div class="bg-surface-50 dark:bg-surface-800 rounded-2xl p-6 h-full flex flex-col shadow-lg hover:shadow-xl transition-shadow duration-300">
+
+              <!-- Header con avatar y datos -->
+              <div class="flex items-center gap-4 mb-4">
+                <p-avatar
+                  [image]="testimonial.avatar"
+                  shape="circle"
+                  size="large"
+                />
+                <div class="flex-1">
+                  <h4 class="font-bold text-surface-900 dark:text-surface-0">{{ testimonial.name }}</h4>
+                  <p class="text-sm text-surface-600 dark:text-surface-400">{{ testimonial.role }}</p>
+                </div>
+              </div>
+
+              <!-- Rating -->
+              <div class="mb-4">
+                <p-rating
+                  [(ngModel)]="testimonial.rating"
+                  [readonly]="true"
+                  class="text-yellow-500"
+                />
+              </div>
+
+              <!-- Comentario -->
+              <p class="text-surface-700 dark:text-surface-300 mb-4 flex-grow leading-relaxed">
+                "{{ testimonial.comment }}"
+              </p>
+
+              <!-- Footer -->
+              <div class="flex items-center justify-between pt-4 border-t border-surface-200 dark:border-surface-700">
+                <span class="text-xs text-surface-500 dark:text-surface-400">{{ testimonial.date }}</span>
+                <span class="text-xs font-medium text-primary-500 bg-primary-100 dark:bg-primary-900/30 px-3 py-1 rounded-full">
+                  {{ testimonial.service }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </p-carousel>
+    </div>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-16 border-t border-surface-200 dark:border-surface-700">
+      <div class="text-center">
+        <div class="text-4xl font-bold text-primary-500 mb-2">500+</div>
+        <div class="text-sm text-surface-600 dark:text-surface-400">Clientas Felices</div>
+      </div>
+      <div class="text-center">
+        <div class="text-4xl font-bold text-primary-500 mb-2">5.0</div>
+        <div class="text-sm text-surface-600 dark:text-surface-400">Calificación Promedio</div>
+      </div>
+      <div class="text-center">
+        <div class="text-4xl font-bold text-primary-500 mb-2">98%</div>
+        <div class="text-sm text-surface-600 dark:text-surface-400">Satisfacción</div>
+      </div>
+      <div class="text-center">
+        <div class="text-4xl font-bold text-primary-500 mb-2">15+</div>
+        <div class="text-sm text-surface-600 dark:text-surface-400">Años Experiencia</div>
+      </div>
+    </div>
+  </div>
+</section>

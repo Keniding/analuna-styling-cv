@@ -1,0 +1,79 @@
+<section class="py-20 bg-surface-0 dark:bg-surface-900">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+      <!-- Imagen izquierda -->
+      <div
+        class="relative"
+        pAnimateOnScroll
+        enterClass="fadeinleft"
+      >
+        <div class="relative">
+          <img
+            src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=600&h=800&fit=crop"
+            alt="Ana Luna - Cosmetóloga"
+            class="rounded-3xl shadow-2xl w-full h-[600px] object-cover"
+          />
+
+          <!-- Badge flotante -->
+          <div class="absolute top-8 -right-4 bg-surface-0 dark:bg-surface-900 rounded-2xl p-4 shadow-xl">
+            <div class="flex items-center gap-3">
+              <i class="pi pi-verified text-3xl text-primary-500"></i>
+              <div>
+                <div class="font-bold text-surface-900 dark:text-surface-0">Certificada</div>
+                <div class="text-sm text-surface-600 dark:text-surface-400">Profesional</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contenido derecha -->
+      <div
+        pAnimateOnScroll
+        enterClass="fadeinright"
+      >
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-sm font-medium mb-4">
+          <i class="pi pi-user"></i>
+          <span>Sobre Mí</span>
+        </div>
+
+        <h2 class="text-3xl sm:text-4xl font-bold text-surface-900 dark:text-surface-0 mb-6">
+          Pasión por realzar tu belleza natural
+        </h2>
+
+        <p class="text-lg text-surface-600 dark:text-surface-300 mb-6">
+          Soy Ana Luna, cosmetóloga profesional con más de 15 años de experiencia en tratamientos faciales, corporales y técnicas avanzadas de belleza.
+        </p>
+
+        <p class="text-surface-600 dark:text-surface-300 mb-8">
+          Mi filosofía se basa en resaltar la belleza única de cada persona mediante tratamientos personalizados, utilizando productos de alta calidad y las técnicas más innovadoras del mercado.
+        </p>
+
+        <!-- Lista de características -->
+        <div class="space-y-4 mb-8">
+          @for (feature of features; track feature.title) {
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center flex-shrink-0">
+                <i [class]="feature.icon" class="text-primary-500"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold text-surface-900 dark:text-surface-0 mb-1">{{ feature.title }}</h3>
+                <p class="text-sm text-surface-600 dark:text-surface-400">{{ feature.description }}</p>
+              </div>
+            </div>
+          }
+        </div>
+
+        <p-button
+          label="Conocer más sobre mí"
+          icon="pi pi-arrow-right"
+          iconPos="right"
+          [outlined]="true"
+        />
+      </div>
+    </div>
+  </div>
+</section>

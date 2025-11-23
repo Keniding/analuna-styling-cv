@@ -1,0 +1,149 @@
+<button
+  pButton
+  icon="pi pi-calendar"
+  class="fixed bottom-6 right-6 z-50 !w-14 !h-14 !rounded-full shadow-2xl"
+  [pTooltip]="'Reservar Cita'"
+  tooltipPosition="left"
+  (click)="showDialog()"
+></button>
+
+<!-- Dialog de reserva -->
+<p-dialog
+  [(visible)]="visible"
+  [modal]="true"
+  [draggable]="false"
+  [resizable]="false"
+  [style]="{ width: '90vw', maxWidth: '500px' }"
+  styleClass="p-fluid"
+>
+  <ng-template #header>
+    <div class="flex items-center gap-3">
+      <i class="pi pi-calendar text-primary-500 text-2xl"></i>
+      <div>
+        <h2 class="text-2xl font-bold text-surface-900 dark:text-surface-0 m-0">
+          Reserva tu Cita
+        </h2>
+        <p class="text-sm text-surface-600 dark:text-surface-400 m-0 mt-1">
+          Completa el formulario y te contactaremos pronto
+        </p>
+      </div>
+    </div>
+  </ng-template>
+
+  <form (ngSubmit)="onSubmit()" class="space-y-4 pt-4">
+    <!-- Nombre -->
+    <div class="flex flex-col gap-2">
+      <label for="name" class="text-sm font-medium text-surface-900 dark:text-surface-0">
+        Nombre completo *
+      </label>
+      <input
+        pInputText
+        id="name"
+        [(ngModel)]="name"
+        name="name"
+        placeholder="Tu nombre"
+        required
+      />
+    </div>
+
+    <!-- Email -->
+    <div class="flex flex-col gap-2">
+      <label for="email" class="text-sm font-medium text-surface-900 dark:text-surface-0">
+        Correo electrónico *
+      </label>
+      <input
+        pInputText
+        id="email"
+        type="email"
+        [(ngModel)]="email"
+        name="email"
+        placeholder="tu@email.com"
+        required
+      />
+    </div>
+
+    <!-- Teléfono -->
+    <div class="flex flex-col gap-2">
+      <label for="phone" class="text-sm font-medium text-surface-900 dark:text-surface-0">
+        Teléfono *
+      </label>
+      <input
+        pInputText
+        id="phone"
+        type="tel"
+        [(ngModel)]="phone"
+        name="phone"
+        placeholder="+51 999 999 999"
+        required
+      />
+    </div>
+
+    <!-- Fecha -->
+    <div class="flex flex-col gap-2">
+      <label for="date" class="text-sm font-medium text-surface-900 dark:text-surface-0">
+        Fecha preferida *
+      </label>
+      <p-date-picker
+        [(ngModel)]="date"
+        name="date"
+        inputId="date"
+        [showIcon]="true"
+        iconDisplay="input"
+        placeholder="Selecciona una fecha"
+        dateFormat="dd/mm/yy"
+        [minDate]="minDate"
+        required
+      />
+    </div>
+
+    <!-- Servicio -->
+    <div class="flex flex-col gap-2">
+      <label for="service" class="text-sm font-medium text-surface-900 dark:text-surface-0">
+        Servicio de interés *
+      </label>
+      <p-select
+        [(ngModel)]="selectedService"
+        name="service"
+        inputId="service"
+        [options]="services"
+        optionLabel="name"
+        placeholder="Selecciona un servicio"
+        required
+      />
+    </div>
+
+    <!-- Mensaje -->
+    <div class="flex flex-col gap-2">
+      <label for="message" class="text-sm font-medium text-surface-900 dark:text-surface-0">
+        Mensaje adicional
+      </label>
+      <textarea
+        pTextarea
+        id="message"
+        [(ngModel)]="message"
+        name="message"
+        rows="3"
+        placeholder="Cuéntanos más sobre lo que necesitas..."
+      ></textarea>
+    </div>
+
+    <!-- Botones -->
+    <div class="flex gap-3 pt-4">
+      <p-button
+        label="Cancelar"
+        severity="secondary"
+        [outlined]="true"
+        styleClass="flex-1"
+        (onClick)="visible = false"
+        type="button"
+      />
+      <p-button
+        type="submit"
+        label="Reservar"
+        icon="pi pi-send"
+        iconPos="right"
+        styleClass="flex-1"
+      />
+    </div>
+  </form>
+</p-dialog>
