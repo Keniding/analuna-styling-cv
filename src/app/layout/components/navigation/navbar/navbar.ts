@@ -17,9 +17,9 @@ import { RippleModule } from 'primeng/ripple';
     BadgeModule,
     AvatarModule,
     InputTextModule,
-    RippleModule
+    RippleModule,
   ],
-  templateUrl: './navbar.html'
+  templateUrl: './navbar.html',
 })
 export class Navbar {
   items: MenuItem[] = [
@@ -31,46 +31,46 @@ export class Navbar {
           label: 'Tratamientos Faciales',
           icon: 'pi pi-star',
           items: [
-            { label: 'Limpieza Profunda', icon: 'pi pi-circle' },
-            { label: 'Hidratación', icon: 'pi pi-circle' },
-            { label: 'Anti-edad', icon: 'pi pi-circle' }
-          ]
+            { label: 'Limpieza Profunda', icon: 'pi pi-eraser' },
+            { label: 'Hidratación', icon: 'pi pi-tint' },
+            { label: 'Anti-edad', icon: 'pi pi-shield' },
+          ],
         },
         {
           label: 'Tratamientos Corporales',
           icon: 'pi pi-heart',
           items: [
-            { label: 'Masajes', icon: 'pi pi-circle' },
-            { label: 'Exfoliación', icon: 'pi pi-circle' },
-            { label: 'Reafirmante', icon: 'pi pi-circle' }
-          ]
+            { label: 'Masajes', icon: 'pi pi-wave-pulse' },
+            { label: 'Exfoliación', icon: 'pi pi-sparkles' },
+            { label: 'Reafirmante', icon: 'pi pi-arrow-up' },
+          ],
         },
         {
           label: 'Maquillaje',
           icon: 'pi pi-palette',
           items: [
-            { label: 'Social', icon: 'pi pi-circle' },
-            { label: 'Novias', icon: 'pi pi-circle' },
-            { label: 'Profesional', icon: 'pi pi-circle' }
-          ]
-        }
-      ]
+            { label: 'Social', icon: 'pi pi-instagram' },
+            { label: 'Novias', icon: 'pi pi-heart-fill' },
+            { label: 'Profesional', icon: 'pi pi-briefcase' },
+          ],
+        },
+      ],
     },
     {
       label: 'Portafolio',
       icon: 'pi pi-images',
-      routerLink: '/portafolio'
+      routerLink: '/portafolio',
     },
     {
       label: 'Sobre Mí',
       icon: 'pi pi-user',
-      routerLink: '/sobre-mi'
+      routerLink: '/sobre-mi',
     },
     {
       label: 'Contacto',
       icon: 'pi pi-envelope',
-      routerLink: '/contacto'
-    }
+      routerLink: '/contacto',
+    },
   ];
 
   onReservarClick() {
