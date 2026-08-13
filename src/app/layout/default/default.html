@@ -3,11 +3,13 @@
   <!-- Header Superior -->
   <app-navbar />
 
-  <!-- SpeedDial Flotante (Desktop) -->
-  <div class="hidden md:block fixed right-4 top-1/2 -translate-y-1/2 z-50">
+  <!-- SpeedDial Flotante (Desktop): apilado sobre el botón de WhatsApp en la
+       esquina inferior derecha para no cruzarse nunca con el contenido de las
+       secciones (antes estaba centrado verticalmente y tapaba texto/botones). -->
+  <div class="hidden md:block fixed right-4 bottom-24 z-40">
     <p-speeddial
       [model]="speedDialItems"
-      direction="down"
+      direction="up"
       buttonClassName="p-button-rounded p-button-outlined"
       [showIcon]="'pi pi-bars'"
       [hideIcon]="'pi pi-times'"
