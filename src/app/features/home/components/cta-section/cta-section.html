@@ -24,7 +24,7 @@
           Reserva tu Cita
         </h2>
         <p class="text-sm text-surface-600 dark:text-surface-400 m-0 mt-1">
-          Completa el formulario y te contactaremos pronto
+          Completa el formulario y te llevaremos a WhatsApp con los datos listos
         </p>
       </div>
     </div>
@@ -42,22 +42,6 @@
         [(ngModel)]="name"
         name="name"
         placeholder="Tu nombre"
-        required
-      />
-    </div>
-
-    <!-- Email -->
-    <div class="flex flex-col gap-2">
-      <label for="email" class="text-sm font-medium text-surface-900 dark:text-surface-0">
-        Correo electrónico *
-      </label>
-      <input
-        pInputText
-        id="email"
-        type="email"
-        [(ngModel)]="email"
-        name="email"
-        placeholder="tu@email.com"
         required
       />
     </div>
@@ -139,8 +123,8 @@
       />
       <p-button
         type="submit"
-        label="Reservar"
-        icon="pi pi-send"
+        label="Reservar por WhatsApp"
+        icon="pi pi-whatsapp"
         iconPos="right"
         styleClass="flex-1"
       />

@@ -10,7 +10,7 @@
           <svg width="33" height="35" viewBox="0 0 33 35" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-8 h-8">
             <path d="M15.5 0L31 8.75V26.25L15.5 35L0 26.25V8.75L15.5 0Z" fill="var(--primary-color)" />
           </svg>
-          <h3 class="font-bold text-xl text-primary-500 tracking-tight">AnaLuna Styling</h3>
+          <h3 class="font-bold text-xl text-primary-500 tracking-tight">Analuna Atelier</h3>
         </div>
 
         <p class="text-sm text-surface-500 dark:text-surface-400">
@@ -20,14 +20,16 @@
         <!-- Redes Sociales con Tooltip de PrimeNG -->
         <div class="flex gap-2">
           @for (social of socialLinks; track social.label) {
-            <p-button
-              [icon]="social.icon"
-              [rounded]="true"
-              [text]="true"
-              severity="secondary"
-              [pTooltip]="social.label"
-              tooltipPosition="top"
-            />
+            <a [href]="social.url" target="_blank" rel="noopener noreferrer" [attr.aria-label]="social.label">
+              <p-button
+                [icon]="social.icon"
+                [rounded]="true"
+                [text]="true"
+                severity="secondary"
+                [pTooltip]="social.label"
+                tooltipPosition="top"
+              />
+            </a>
           }
         </div>
       </div>
@@ -77,7 +79,7 @@
     <!-- Copyright y Enlaces Legales -->
     <div class="flex flex-col md:flex-row justify-between items-center gap-4 pt-4">
       <div class="text-sm text-surface-400 text-center md:text-left">
-        <p>© {{ currentYear }} AnaLuna Styling - Todos los derechos reservados</p>
+        <p>© {{ currentYear }} Analuna Atelier - Todos los derechos reservados</p>
       </div>
 
       <div class="flex gap-4 text-xs text-surface-400">
