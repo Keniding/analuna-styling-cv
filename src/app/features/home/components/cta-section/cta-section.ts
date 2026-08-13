@@ -41,12 +41,12 @@ export class CtaSection implements OnInit, OnDestroy {
   minDate: Date = new Date();
 
   readonly services: Service[] = [
-    { name: 'Tratamiento Facial', value: 'facial' },
-    { name: 'Tratamiento Corporal', value: 'corporal' },
-    { name: 'Maquillaje Profesional', value: 'maquillaje' },
-    { name: 'Manicure & Pedicure', value: 'manicure' },
-    { name: 'Pestañas & Cejas', value: 'pestanas' },
+    { name: 'Estética de Uñas', value: 'unas' },
+    { name: 'Tratamientos Faciales', value: 'faciales' },
+    { name: 'Masofilaxia Corporal', value: 'corporal' },
     { name: 'Depilación', value: 'depilacion' },
+    { name: 'Estética Capilar', value: 'capilar' },
+    { name: 'Servicio a Domicilio', value: 'domicilio' },
     { name: 'Otro', value: 'otro' }
   ];
 

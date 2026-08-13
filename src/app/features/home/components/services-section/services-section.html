@@ -1,4 +1,4 @@
-<section class="py-20 bg-surface-50 dark:bg-surface-950">
+<section id="servicios" class="py-20 bg-surface-50 dark:bg-surface-950">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
     <!-- Header -->
@@ -27,6 +27,7 @@
         <div
           pAnimateOnScroll
           enterClass="zoomin"
+          [style.animation-delay.ms]="(idx % 3) * 120"
         >
           <p-card styleClass="h-full hover:shadow-xl transition-shadow duration-300">
             <ng-template #header>
@@ -62,12 +63,13 @@
               }
             </ul>
 
-            <div class="flex items-center justify-between pt-4 border-t border-surface-200 dark:border-surface-700">
-              <div class="text-2xl font-bold text-primary-500">{{ service.price }}</div>
+            <div class="pt-4 border-t border-surface-200 dark:border-surface-700">
               <p-button
-                label="Reservar"
-                icon="pi pi-calendar"
+                label="Cotizar por WhatsApp"
+                icon="pi pi-whatsapp"
                 [text]="true"
+                styleClass="w-full"
+                (onClick)="cotizar(service.title)"
               />
             </div>
           </p-card>
@@ -75,14 +77,26 @@
       }
     </div>
 
-    <!-- CTA -->
-    <div class="text-center mt-12">
+    <!-- Servicio a domicilio -->
+    <div
+      class="mt-12 flex flex-col sm:flex-row items-center justify-between gap-6 bg-primary-50 dark:bg-primary-900/20 rounded-3xl p-8"
+      pAnimateOnScroll
+      enterClass="fadeinup"
+    >
+      <div class="flex items-center gap-4 text-center sm:text-left">
+        <div class="w-14 h-14 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center flex-shrink-0">
+          <i class="pi pi-home text-primary-500 text-2xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-surface-900 dark:text-surface-0">Servicio a Domicilio</h3>
+          <p class="text-sm text-surface-600 dark:text-surface-400">¿No puedes salir? Vamos a ti o a tu lugar de trabajo. Consulta cobertura.</p>
+        </div>
+      </div>
       <p-button
-        label="Ver todos los servicios"
-        icon="pi pi-arrow-right"
-        iconPos="right"
-        size="large"
-        [outlined]="true"
+        label="Consultar cobertura"
+        icon="pi pi-whatsapp"
+        [raised]="true"
+        (onClick)="cotizar('Servicio a domicilio')"
       />
     </div>
   </div>

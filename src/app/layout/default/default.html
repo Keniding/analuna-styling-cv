@@ -4,24 +4,23 @@
   <app-navbar />
 
   <!-- SpeedDial Flotante (Desktop) -->
-  <p-speeddial
-    [model]="speedDialItems"
-    direction="down"
-    [style]="{'position': 'fixed', 'right': '1rem', 'top': '50%', 'transform': 'translateY(-50%)', 'z-index': '50'}"
-    [className]="'hidden md:flex'"
-    buttonClassName="p-button-rounded p-button-outlined"
-    [showIcon]="'pi pi-bars'"
-    [hideIcon]="'pi pi-times'"
-  />
+  <div class="hidden md:block fixed right-4 top-1/2 -translate-y-1/2 z-50">
+    <p-speeddial
+      [model]="speedDialItems"
+      direction="down"
+      buttonClassName="p-button-rounded p-button-outlined"
+      [showIcon]="'pi pi-bars'"
+      [hideIcon]="'pi pi-times'"
+    />
+  </div>
 
   <!-- Navegación móvil (Bottom Bar) -->
   <div class="md:hidden fixed bottom-0 left-0 w-full bg-surface-0/90 dark:bg-surface-900/90 backdrop-blur-md border-t border-surface-200 dark:border-surface-800 z-50">
     <div class="flex justify-around items-center px-4 py-3">
       @for (item of menuItems; track item.label) {
         <a
-          [routerLink]="item.route"
-          routerLinkActive="text-primary-500"
-          [routerLinkActiveOptions]="{exact: item.route === '/'}"
+          [href]="'#' + item.fragment"
+          (click)="$event.preventDefault(); scrollToFragment(item.fragment)"
           class="flex flex-col items-center gap-1 text-surface-400 transition-colors min-w-[60px]"
           pRipple
         >

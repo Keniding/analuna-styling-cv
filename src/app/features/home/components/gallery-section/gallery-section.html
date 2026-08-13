@@ -1,4 +1,4 @@
-<section class="py-20 bg-surface-50 dark:bg-surface-950">
+<section id="portafolio" class="py-20 bg-surface-50 dark:bg-surface-950">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
     <!-- Header -->
@@ -21,58 +21,131 @@
       </p>
     </div>
 
-    <!-- Galleria de PrimeNG -->
-    <div
-      pAnimateOnScroll
-      enterClass="zoomin"
-    >
-      <p-galleria
-        [value]="images"
-        [responsiveOptions]="responsiveOptions"
-        [containerStyle]="{ 'max-width': '100%' }"
-        [numVisible]="5"
-        [circular]="true"
-        [fullScreen]="true"
-        [showItemNavigators]="true"
-        [showThumbnails]="true"
-        [showIndicators]="true"
-        [showItemNavigatorsOnHover]="true"
-        [showThumbnailNavigators]="false"
-      >
-        <ng-template #item let-item>
-          <div class="relative">
-            <img
-              [src]="item.itemImageSrc"
-              [alt]="item.alt"
-              class="w-full h-[500px] object-cover rounded-2xl"
-            />
-            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-surface-900/80 to-transparent p-6 rounded-b-2xl">
-              <h3 class="text-xl font-bold text-white">{{ item.title }}</h3>
-            </div>
-          </div>
-        </ng-template>
-
-        <ng-template #thumbnail let-item>
-          <div class="grid place-items-center">
-            <img
-              [src]="item.thumbnailImageSrc"
-              [alt]="item.alt"
-              class="rounded-lg"
-            />
-          </div>
-        </ng-template>
-      </p-galleria>
+    <!-- Grid de fotos -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+      @for (image of images; track image.title; let i = $index) {
+        <button
+          type="button"
+          pAnimateOnScroll
+          enterClass="zoomin"
+          [style.animation-delay.ms]="(i % 4) * 100"
+          class="group relative aspect-square overflow-hidden rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary-500"
+          (click)="openImage(i)"
+        >
+          <img
+            [src]="image.thumbnailImageSrc"
+            [alt]="image.alt"
+            loading="lazy"
+            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-surface-900/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <span class="absolute bottom-3 left-3 right-3 text-sm font-semibold text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            {{ image.title }}
+          </span>
+        </button>
+      }
     </div>
+
+    <!-- Videos -->
+    <div class="mt-16">
+      <h3 class="text-xl font-bold text-surface-900 dark:text-surface-0 mb-6 text-center">
+        Míralo en Movimiento
+      </h3>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+        @for (video of videos; track video.title; let i = $index) {
+          <div
+            pAnimateOnScroll
+            enterClass="zoomin"
+            [style.animation-delay.ms]="(i % 5) * 100"
+            class="relative aspect-[9/16] overflow-hidden rounded-2xl bg-surface-900"
+          >
+            @if (playingVideo === i) {
+              <video
+                [src]="video.src"
+                [attr.aria-label]="video.alt"
+                class="w-full h-full object-cover"
+                controls
+                autoplay
+                playsinline
+              ></video>
+            } @else {
+              <button
+                type="button"
+                class="group w-full h-full block focus:outline-none focus:ring-2 focus:ring-primary-500"
+                (click)="playVideo(i)"
+              >
+                <img
+                  [src]="video.poster"
+                  [alt]="video.alt"
+                  loading="lazy"
+                  class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                />
+                <div class="absolute inset-0 bg-surface-900/20 group-hover:bg-surface-900/35 transition-colors duration-300"></div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <div class="w-12 h-12 rounded-full bg-surface-0/90 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <i class="pi pi-play text-primary-500 text-lg ml-0.5"></i>
+                  </div>
+                </div>
+                <span class="absolute bottom-2 left-2 right-2 text-xs font-medium text-white line-clamp-2 text-left">
+                  {{ video.title }}
+                </span>
+              </button>
+            }
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Lightbox -->
+    <p-galleria
+      [value]="images"
+      [responsiveOptions]="responsiveOptions"
+      [numVisible]="5"
+      [circular]="true"
+      [fullScreen]="true"
+      [(visible)]="displayLightbox"
+      [activeIndex]="activeIndex"
+      [showItemNavigators]="true"
+      [showThumbnails]="true"
+      [showIndicators]="false"
+      [showItemNavigatorsOnHover]="true"
+      [showThumbnailNavigators]="false"
+    >
+      <ng-template #item let-item>
+        <div class="relative">
+          <img
+            [src]="item.itemImageSrc"
+            [alt]="item.alt"
+            class="w-full max-h-[80vh] object-contain"
+          />
+          <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-surface-900/80 to-transparent p-6">
+            <h3 class="text-xl font-bold text-white">{{ item.title }}</h3>
+          </div>
+        </div>
+      </ng-template>
+
+      <ng-template #thumbnail let-item>
+        <div class="grid place-items-center">
+          <img
+            [src]="item.thumbnailImageSrc"
+            [alt]="item.alt"
+            class="rounded-lg"
+          />
+        </div>
+      </ng-template>
+    </p-galleria>
 
     <!-- CTA -->
     <div class="text-center mt-12">
-      <p-button
-        label="Ver portafolio completo"
-        icon="pi pi-arrow-right"
-        iconPos="right"
-        size="large"
-        [outlined]="true"
-      />
+      <a href="https://www.instagram.com/analuna_atelier1?igsh=YjFqenVmZHBhdGg0" target="_blank" rel="noopener noreferrer">
+        <p-button
+          label="Ver portafolio completo en Instagram"
+          icon="pi pi-arrow-right"
+          iconPos="right"
+          size="large"
+          [outlined]="true"
+        />
+      </a>
     </div>
   </div>
 </section>

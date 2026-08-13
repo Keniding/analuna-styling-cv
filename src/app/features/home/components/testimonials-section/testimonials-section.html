@@ -51,15 +51,6 @@
                 </div>
               </div>
 
-              <!-- Rating -->
-              <div class="mb-4">
-                <p-rating
-                  [(ngModel)]="testimonial.rating"
-                  [readonly]="true"
-                  class="text-yellow-500"
-                />
-              </div>
-
               <!-- Comentario -->
               <p class="text-surface-700 dark:text-surface-300 mb-4 flex-grow leading-relaxed">
                 "{{ testimonial.comment }}"
@@ -79,14 +70,10 @@
     </div>
 
     <!-- Stats -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-16 border-t border-surface-200 dark:border-surface-700">
+    <div class="grid grid-cols-3 gap-8 mt-16 pt-16 border-t border-surface-200 dark:border-surface-700">
       <div class="text-center">
         <div class="text-4xl font-bold text-primary-500 mb-2">500+</div>
         <div class="text-sm text-surface-600 dark:text-surface-400">Clientas Felices</div>
-      </div>
-      <div class="text-center">
-        <div class="text-4xl font-bold text-primary-500 mb-2">5.0</div>
-        <div class="text-sm text-surface-600 dark:text-surface-400">Calificación Promedio</div>
       </div>
       <div class="text-center">
         <div class="text-4xl font-bold text-primary-500 mb-2">98%</div>

@@ -28,11 +28,23 @@ export class Footer {
   ];
 
   readonly quickLinks = [
-    { label: 'Servicios', route: '/servicios', icon: 'pi pi-sparkles' },
-    { label: 'Portafolio', route: '/portafolio', icon: 'pi pi-images' },
-    { label: 'Sobre Mí', route: '/sobre-mi', icon: 'pi pi-user' },
-    { label: 'Contacto', route: '/contacto', icon: 'pi pi-envelope' },
+    { label: 'Servicios', route: '#servicios', icon: 'pi pi-sparkles' },
+    { label: 'Portafolio', route: '#portafolio', icon: 'pi pi-images' },
+    { label: 'Sobre Mí', route: '#sobre-mi', icon: 'pi pi-user' },
+    { label: 'Contacto', route: '#contacto', icon: 'pi pi-envelope' },
   ];
+
+  onReservarClick(): void {
+    globalThis.dispatchEvent(new CustomEvent('open-booking-dialog'));
+  }
+
+  navigateTo(route: string): void {
+    const fragment = route.replace('#', '');
+    if (fragment === 'sobre-mi') {
+      globalThis.dispatchEvent(new CustomEvent('show-about-slide'));
+    }
+    document.getElementById(fragment)?.scrollIntoView({ behavior: 'smooth' });
+  }
 
   readonly contactInfo = [
     { icon: 'pi pi-whatsapp', text: '+51 983 438 583', type: 'phone' },
