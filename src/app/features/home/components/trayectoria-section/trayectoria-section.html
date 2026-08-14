@@ -1,0 +1,121 @@
+<section id="trayectoria" class="py-20 bg-surface-0 dark:bg-surface-900">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Header -->
+    <div
+      class="text-center mb-16"
+      pAnimateOnScroll
+      enterClass="fadein"
+    >
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-sm font-medium mb-4">
+        <i class="pi pi-briefcase"></i>
+        <span>Trayectoria</span>
+      </div>
+
+      <h2 class="text-3xl sm:text-4xl font-bold text-surface-900 dark:text-surface-0 mb-4">
+        Mi Camino en la Belleza
+      </h2>
+
+      <p class="text-lg text-surface-600 dark:text-surface-300 max-w-2xl mx-auto">
+        Cada etapa sumó una técnica, un estándar y una forma de cuidar a mis clientas
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 mb-20">
+
+      <!-- Imagen de taller -->
+      <div
+        class="lg:col-span-2"
+        pAnimateOnScroll
+        enterClass="fadeinleft"
+      >
+        <div class="lg:sticky lg:top-24">
+          <img
+            src="assets/images/gallery/workspace-tools-full.jpg"
+            alt="Herramientas y espacio de trabajo de Analuna Atelier"
+            class="rounded-3xl shadow-xl w-full h-[280px] lg:h-[420px] object-cover"
+          />
+          <p class="text-sm text-surface-500 dark:text-surface-400 mt-4 text-center lg:text-left">
+            Bioseguridad e instrumental profesional en cada cita
+          </p>
+        </div>
+      </div>
+
+      <!-- Timeline -->
+      <div class="lg:col-span-3">
+        @for (exp of experiences; track exp.role; let i = $index; let last = $last) {
+          <div
+            class="relative pl-10"
+            [class.pb-10]="!last"
+            pAnimateOnScroll
+            enterClass="fadeinup"
+            [style.animation-delay.ms]="i * 100"
+          >
+            @if (!last) {
+              <div class="absolute left-[7px] top-8 bottom-0 w-0.5 bg-surface-200 dark:bg-surface-700"></div>
+            }
+            <div
+              class="absolute left-0 top-1.5 w-4 h-4 rounded-full border-4"
+              [class]="exp.current
+                ? 'bg-primary-500 border-primary-100 dark:border-primary-900/40'
+                : 'bg-surface-0 dark:bg-surface-900 border-surface-300 dark:border-surface-600'"
+            ></div>
+
+            <div class="bg-surface-50 dark:bg-surface-800 rounded-2xl p-6 hover:shadow-md transition-shadow duration-300">
+              <div class="flex flex-wrap items-center gap-2 mb-2">
+                <span class="text-xs font-semibold px-3 py-1 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300">
+                  {{ exp.period }}
+                </span>
+                @if (exp.current) {
+                  <span class="text-xs font-semibold px-3 py-1 rounded-full bg-primary-500 text-white">
+                    Actual
+                  </span>
+                }
+              </div>
+
+              <h3 class="text-lg font-bold text-surface-900 dark:text-surface-0 mb-1">
+                {{ exp.role }}
+              </h3>
+              <p class="text-sm font-medium text-surface-500 dark:text-surface-400 mb-3">
+                {{ exp.company }} · {{ exp.location }}
+              </p>
+              <p class="text-surface-600 dark:text-surface-300">
+                {{ exp.description }}
+              </p>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Proyectos destacados -->
+    <div
+      class="text-center mb-10"
+      pAnimateOnScroll
+      enterClass="fadein"
+    >
+      <h3 class="text-2xl sm:text-3xl font-bold text-surface-900 dark:text-surface-0">
+        Proyectos Destacados
+      </h3>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      @for (project of projects; track project.title; let i = $index) {
+        <div
+          class="flex items-start gap-4 bg-surface-50 dark:bg-surface-800 rounded-2xl p-6"
+          pAnimateOnScroll
+          enterClass="zoomin"
+          [style.animation-delay.ms]="(i % 2) * 120"
+        >
+          <div class="w-12 h-12 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center flex-shrink-0">
+            <i [class]="project.icon" class="text-primary-500 text-xl"></i>
+          </div>
+          <div>
+            <h4 class="font-bold text-surface-900 dark:text-surface-0 mb-1">{{ project.title }}</h4>
+            <p class="text-sm text-surface-600 dark:text-surface-400">{{ project.description }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

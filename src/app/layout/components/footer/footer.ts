@@ -31,6 +31,7 @@ export class Footer {
     { label: 'Servicios', route: '#servicios', icon: 'pi pi-sparkles' },
     { label: 'Portafolio', route: '#portafolio', icon: 'pi pi-images' },
     { label: 'Sobre Mí', route: '#sobre-mi', icon: 'pi pi-user' },
+    { label: 'Trayectoria', route: '#trayectoria', icon: 'pi pi-briefcase' },
     { label: 'Contacto', route: '#contacto', icon: 'pi pi-envelope' },
   ];
 

@@ -42,6 +42,12 @@ export class Navbar {
       command: (e) => this.navigateTo(e, 'sobre-mi'),
     },
     {
+      label: 'Trayectoria',
+      icon: 'pi pi-briefcase',
+      url: '#trayectoria',
+      command: (e) => this.navigateTo(e, 'trayectoria'),
+    },
+    {
       label: 'Contacto',
       icon: 'pi pi-envelope',
       url: '#contacto',
