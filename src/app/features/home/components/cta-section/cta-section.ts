@@ -1,5 +1,5 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {Component, OnDestroy, OnInit, PLATFORM_ID, inject} from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import {Button, ButtonDirective} from 'primeng/button';
 import { InputText } from 'primeng/inputtext';
 import { Textarea } from 'primeng/textarea';
@@ -50,12 +50,18 @@ export class CtaSection implements OnInit, OnDestroy {
     { name: 'Otro', value: 'otro' }
   ];
 
+  private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
+
   ngOnInit() {
-    window.addEventListener('open-booking-dialog', this.handleOpenDialog);
+    if (this.isBrowser) {
+      window.addEventListener('open-booking-dialog', this.handleOpenDialog);
+    }
   }
 
   ngOnDestroy() {
-    window.removeEventListener('open-booking-dialog', this.handleOpenDialog);
+    if (this.isBrowser) {
+      window.removeEventListener('open-booking-dialog', this.handleOpenDialog);
+    }
   }
 
   handleOpenDialog = () => {
@@ -80,7 +86,9 @@ export class CtaSection implements OnInit, OnDestroy {
     ].filter(Boolean);
 
     const url = `https://wa.me/${this.whatsappNumber}?text=${encodeURIComponent(lines.join('\n'))}`;
-    window.open(url, '_blank', 'noopener,noreferrer');
+    if (this.isBrowser) {
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
     this.visible = false;
   }
 }
