@@ -33,11 +33,9 @@
                 "output": "/assets"
               },
               {
-                "glob": "manifest.json",
-                "input": "src/assets/images/favicon",
-                "output": "/assets/images/favicon"
-              },
-              "src/favicon.ico"
+                "glob": "**/*",
+                "input": "public"
+              }
             ],
             "styles": [
               "node_modules/primeicons/primeicons.css",
@@ -117,11 +115,9 @@
                 "output": "/assets"
               },
               {
-                "glob": "manifest.json",
-                "input": "src/assets/images/favicon",
-                "output": "/assets/images/favicon"
-              },
-              "src/favicon.ico"
+                "glob": "**/*",
+                "input": "public"
+              }
             ],
             "styles": [
               "node_modules/primeicons/primeicons.css",

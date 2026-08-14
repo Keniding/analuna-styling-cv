@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Esta es una Single Page Application (SPA).
+# Todo el contenido (Sobre Mí, Servicios, Portafolio, Trayectoria, Precios, Contacto)
+# vive en esta única URL: https://analuna-styling-cv.vercel.app/
+# Los fragmentos (#servicios, #portafolio, etc.) son navegación interna del cliente
+# y no representan páginas separadas que deban indexarse.
+
+Sitemap: https://analuna-styling-cv.vercel.app/sitemap.xml

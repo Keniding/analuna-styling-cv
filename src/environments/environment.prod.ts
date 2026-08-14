@@ -1,13 +1,13 @@
 export const environment = {
-  production: false,
+  production: true,
   apis: {
   },
   app: "analuna",
-  stage: "dev",
+  stage: "production",
   version: "1.0.0",
-  domain: "http://localhost:4200/",
+  domain: "https://analuna-styling-cv.vercel.app/",
   name: "Analuna Atelier",
   titles: {
-    main: "Inicio",
+    main: "Cosmetología Dermatológica y Uñas en Lima",
   }
 };
