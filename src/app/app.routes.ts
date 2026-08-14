@@ -5,17 +5,17 @@ import { Default } from '@layout/default/default';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
-  },
-  {
-    path: '',
     component: Default,
     children: [
       {
-        path: 'home',
+        path: '',
         loadComponent: () => import('./features/home/home').then(m => m.Home),
         title: environment.titles.main
+      },
+      {
+        // Alias histórico: canonicaliza a la raíz en vez de duplicar contenido en /home.
+        path: 'home',
+        redirectTo: ''
       },
       /*
       {
@@ -43,6 +43,6 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'home'
+    redirectTo: ''
   }
 ];

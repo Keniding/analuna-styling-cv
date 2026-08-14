@@ -1,11 +1,137 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Analuna Atelier</title>
-  <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <base href="/">
+
+  <!-- SEO Básico -->
+  <title>Cosmetología Dermatológica y Uñas en Lima - Analuna Atelier</title>
+  <meta name="description" content="Especialista en cosmética dermatológica y estética integral en Lima. Manicura y pedicura profesional (Soft Gel, Rubber, Builder Gel), tratamientos faciales, estética capilar y servicio a domicilio. Reserva por WhatsApp.">
+  <meta name="keywords" content="manicura Lima, pedicura Lima, uñas gel Lima, soft gel, rubber gel, builder gel, diseño de uñas, cosmetología dermatológica, salón de belleza Lima, tratamientos faciales Lima, masofilaxia corporal, estética capilar, depilación Lima, servicio a domicilio uñas, Analuna Atelier, Ana Claudia">
+  <meta name="author" content="Analuna Atelier">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow">
+  <link rel="canonical" href="https://analuna-styling-cv.vercel.app/">
+
+  <!--
+    NOTA PARA GOOGLE BOT:
+    Este es un Single Page Application (SPA).
+    Todo el contenido (Sobre Mí, Servicios, Portafolio, Trayectoria, Precios, Contacto)
+    está contenido en esta única URL: https://analuna-styling-cv.vercel.app/
+
+    Los fragmentos (#servicios, #portafolio, etc.) son para navegación interna del cliente
+    y NO representan páginas separadas que deban indexarse.
+
+    Por favor, indexa solo: https://analuna-styling-cv.vercel.app/
+  -->
+
+  <!-- Open Graph (Facebook, Instagram, LinkedIn, WhatsApp) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://analuna-styling-cv.vercel.app/">
+  <meta property="og:title" content="Cosmetología Dermatológica y Uñas en Lima - Analuna Atelier">
+  <meta property="og:description" content="Manicura y pedicura profesional, tratamientos faciales, estética capilar y servicio a domicilio. Cosmética dermatológica con bioseguridad de alto estándar en Lima, Perú.">
+  <meta property="og:image" content="https://analuna-styling-cv.vercel.app/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="es_PE">
+  <meta property="og:site_name" content="Analuna Atelier">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://analuna-styling-cv.vercel.app/">
+  <meta name="twitter:title" content="Cosmetología Dermatológica y Uñas en Lima - Analuna Atelier">
+  <meta name="twitter:description" content="Manicura y pedicura profesional, tratamientos faciales, estética capilar y servicio a domicilio en Lima, Perú.">
+  <meta name="twitter:image" content="https://analuna-styling-cv.vercel.app/og-image.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Theme & Mobile -->
+  <meta name="theme-color" content="#E8B4BC">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Analuna Atelier">
+
+  <!-- Structured Data: Negocio local -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BeautySalon",
+    "name": "Analuna Atelier",
+    "alternateName": "Analuna Atelier - Ana Claudia",
+    "description": "Especialista en cosmética dermatológica y estética integral: manicura y pedicura profesional, tratamientos faciales, masofilaxia corporal, depilación y estética capilar. Servicio a domicilio disponible en Lima, Perú.",
+    "url": "https://analuna-styling-cv.vercel.app/",
+    "image": "https://analuna-styling-cv.vercel.app/og-image.jpg",
+    "logo": "https://analuna-styling-cv.vercel.app/apple-touch-icon.png",
+    "telephone": "+51983438583",
+    "priceRange": "$$",
+    "founder": {
+      "@type": "Person",
+      "name": "Ana Claudia",
+      "jobTitle": "Founder & CEO"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Lima",
+      "addressCountry": "PE"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Lima"
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      "opens": "09:00",
+      "closes": "20:00"
+    },
+    "sameAs": [
+      "https://www.instagram.com/analuna_atelier1",
+      "https://www.tiktok.com/@analuna_atelier",
+      "https://wa.me/51983438583"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Servicios Analuna Atelier",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Estética de Uñas", "description": "Uñas en Gel, Soft Gel, Rubber, Builder Gel y diseño de uñas" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tratamientos Faciales", "description": "Limpieza facial e hidratación profunda" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Masofilaxia Corporal", "description": "Tratamiento corporal para relajación y bienestar" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Depilación" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Estética Capilar", "description": "Tinte y alisados" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Servicio a Domicilio" } }
+      ]
+    }
+  }
+  </script>
+
+  <!-- Structured Data: Sitio web -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Analuna Atelier",
+    "url": "https://analuna-styling-cv.vercel.app/",
+    "description": "Cosmética dermatológica y estética integral en Lima, Perú. Manicura, pedicura, tratamientos faciales y capilares.",
+    "inLanguage": "es-PE"
+  }
+  </script>
+
+  <!-- Structured Data: Breadcrumb -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://analuna-styling-cv.vercel.app/" }
+    ]
+  }
+  </script>
 </head>
 <body>
   <app-root></app-root>

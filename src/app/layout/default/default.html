@@ -6,15 +6,17 @@
   <!-- SpeedDial Flotante (Desktop): apilado sobre el botón de WhatsApp en la
        esquina inferior derecha para no cruzarse nunca con el contenido de las
        secciones (antes estaba centrado verticalmente y tapaba texto/botones). -->
-  <div class="hidden md:block fixed right-4 bottom-24 z-40">
-    <p-speeddial
-      [model]="speedDialItems"
-      direction="up"
-      buttonClassName="p-button-rounded p-button-outlined"
-      [showIcon]="'pi pi-bars'"
-      [hideIcon]="'pi pi-times'"
-    />
-  </div>
+  @if (isBrowser) {
+    <div class="hidden md:block fixed right-4 bottom-24 z-40">
+      <p-speeddial
+        [model]="speedDialItems"
+        direction="up"
+        buttonClassName="p-button-rounded p-button-outlined"
+        [showIcon]="'pi pi-bars'"
+        [hideIcon]="'pi pi-times'"
+      />
+    </div>
+  }
 
   <!-- Navegación móvil (Bottom Bar) -->
   <div class="md:hidden fixed bottom-0 left-0 w-full bg-surface-0/90 dark:bg-surface-900/90 backdrop-blur-md border-t border-surface-200 dark:border-surface-800 z-50">

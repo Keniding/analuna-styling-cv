@@ -4,10 +4,12 @@ import {
   ElementRef,
   OnDestroy,
   OnInit,
+  PLATFORM_ID,
   QueryList,
-  ViewChildren
+  ViewChildren,
+  inject
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Button } from 'primeng/button';
 
 @Component({
@@ -70,22 +72,32 @@ export class HeroSection implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChildren('slidePanel') private slidePanels!: QueryList<ElementRef<HTMLElement>>;
 
+  private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
   private intervalId?: ReturnType<typeof setInterval>;
   private readonly showAboutSlide = () => this.goToSlide(1);
   private readonly onResize = () => this.updateHeight();
 
   ngOnInit(): void {
+    if (!this.isBrowser) {
+      return;
+    }
     this.startAutoplay();
     window.addEventListener('show-about-slide', this.showAboutSlide);
     window.addEventListener('resize', this.onResize);
   }
 
   ngAfterViewInit(): void {
+    if (!this.isBrowser) {
+      return;
+    }
     // Deja que el navegador termine el primer layout antes de medir.
     setTimeout(() => this.updateHeight());
   }
 
   ngOnDestroy(): void {
+    if (!this.isBrowser) {
+      return;
+    }
     this.stopAutoplay();
     window.removeEventListener('show-about-slide', this.showAboutSlide);
     window.removeEventListener('resize', this.onResize);
@@ -113,6 +125,9 @@ export class HeroSection implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private updateHeight(): void {
+    if (!this.isBrowser) {
+      return;
+    }
     const panel = this.slidePanels?.get(this.activeSlide)?.nativeElement;
     if (panel) {
       this.containerHeight = panel.offsetHeight;
@@ -141,6 +156,8 @@ export class HeroSection implements OnInit, AfterViewInit, OnDestroy {
   }
 
   scrollToId(id: string): void {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    if (this.isBrowser) {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 }

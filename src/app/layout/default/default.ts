@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, PLATFORM_ID, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Navbar } from '@layout/components/navigation/navbar/navbar';
 import { Footer } from '@layout/components/footer/footer';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { SpeedDialModule } from 'primeng/speeddial';
 import { MenuItem } from 'primeng/api';
 
@@ -18,6 +18,8 @@ import { MenuItem } from 'primeng/api';
   ]
 })
 export class Default {
+  readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
+
   readonly menuItems = [
     { label: 'Inicio', icon: 'pi pi-home', fragment: '' },
     { label: 'Servicios', icon: 'pi pi-sparkles', fragment: 'servicios' },

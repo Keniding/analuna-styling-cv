@@ -8,6 +8,6 @@ export const environment = {
   domain: "http://localhost:4200/",
   name: "Analuna Atelier",
   titles: {
-    main: "Inicio",
+    main: "Cosmetología Dermatológica y Uñas en Lima",
   }
 };
