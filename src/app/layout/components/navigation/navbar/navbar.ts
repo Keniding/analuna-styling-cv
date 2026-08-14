@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { MenubarModule } from 'primeng/menubar';
-import { MenuItem } from 'primeng/api';
+import { MenuItem, MenuItemCommandEvent } from 'primeng/api';
 import { BadgeModule } from 'primeng/badge';
 import { AvatarModule } from 'primeng/avatar';
 import { InputTextModule } from 'primeng/inputtext';
@@ -26,54 +26,47 @@ export class Navbar {
     {
       label: 'Servicios',
       icon: 'pi pi-sparkles',
-      items: [
-        {
-          label: 'Tratamientos Faciales',
-          icon: 'pi pi-star',
-          items: [
-            { label: 'Limpieza Profunda', icon: 'pi pi-eraser' },
-            { label: 'Hidratación', icon: 'pi pi-tint' },
-            { label: 'Anti-edad', icon: 'pi pi-shield' },
-          ],
-        },
-        {
-          label: 'Tratamientos Corporales',
-          icon: 'pi pi-heart',
-          items: [
-            { label: 'Masajes', icon: 'pi pi-wave-pulse' },
-            { label: 'Exfoliación', icon: 'pi pi-sparkles' },
-            { label: 'Reafirmante', icon: 'pi pi-arrow-up' },
-          ],
-        },
-        {
-          label: 'Maquillaje',
-          icon: 'pi pi-palette',
-          items: [
-            { label: 'Social', icon: 'pi pi-instagram' },
-            { label: 'Novias', icon: 'pi pi-heart-fill' },
-            { label: 'Profesional', icon: 'pi pi-briefcase' },
-          ],
-        },
-      ],
+      url: '#servicios',
+      command: (e) => this.navigateTo(e, 'servicios'),
     },
     {
       label: 'Portafolio',
       icon: 'pi pi-images',
-      routerLink: '/portafolio',
+      url: '#portafolio',
+      command: (e) => this.navigateTo(e, 'portafolio'),
     },
     {
       label: 'Sobre Mí',
       icon: 'pi pi-user',
-      routerLink: '/sobre-mi',
+      url: '#sobre-mi',
+      command: (e) => this.navigateTo(e, 'sobre-mi'),
+    },
+    {
+      label: 'Trayectoria',
+      icon: 'pi pi-briefcase',
+      url: '#trayectoria',
+      command: (e) => this.navigateTo(e, 'trayectoria'),
     },
     {
       label: 'Contacto',
       icon: 'pi pi-envelope',
-      routerLink: '/contacto',
+      url: '#contacto',
+      command: (e) => this.navigateTo(e, 'contacto'),
     },
   ];
 
   onReservarClick() {
     globalThis.dispatchEvent(new CustomEvent('open-booking-dialog'));
+  }
+
+  // Navegación vía JS en vez del href nativo: el Router está configurado con
+  // onSameUrlNavigation: 'reload', y un <a href="#..."> nativo dispara ese
+  // reload, remontando los componentes de la página (ej. reinicia el carrusel).
+  private navigateTo(e: MenuItemCommandEvent, fragment: string): void {
+    e.originalEvent?.preventDefault();
+    if (fragment === 'sobre-mi') {
+      globalThis.dispatchEvent(new CustomEvent('show-about-slide'));
+    }
+    document.getElementById(fragment)?.scrollIntoView({ behavior: 'smooth' });
   }
 }

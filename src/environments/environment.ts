@@ -6,8 +6,8 @@ export const environment = {
   stage: "dev",
   version: "1.0.0",
   domain: "http://localhost:4200/",
-  name: "Mi portafolio",
+  name: "Analuna Atelier",
   titles: {
-    main: "AnaLuna",
+    main: "Inicio",
   }
 };

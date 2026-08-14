@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet, Router } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { Navbar } from '@layout/components/navigation/navbar/navbar';
 import { Footer } from '@layout/components/footer/footer';
 import { CommonModule } from '@angular/common';
@@ -12,8 +12,6 @@ import { MenuItem } from 'primeng/api';
   imports: [
     CommonModule,
     RouterOutlet,
-    RouterLink,
-    RouterLinkActive,
     Navbar,
     Footer,
     SpeedDialModule
@@ -21,16 +19,16 @@ import { MenuItem } from 'primeng/api';
 })
 export class Default {
   readonly menuItems = [
-    { label: 'Inicio', icon: 'pi pi-home', route: '/' },
-    { label: 'Servicios', icon: 'pi pi-sparkles', route: '/servicios' },
-    { label: 'Portafolio', icon: 'pi pi-images', route: '/portafolio' },
-    { label: 'Sobre Mí', icon: 'pi pi-user', route: '/sobre-mi' },
-    { label: 'Contacto', icon: 'pi pi-envelope', route: '/contacto' }
+    { label: 'Inicio', icon: 'pi pi-home', fragment: '' },
+    { label: 'Servicios', icon: 'pi pi-sparkles', fragment: 'servicios' },
+    { label: 'Portafolio', icon: 'pi pi-images', fragment: 'portafolio' },
+    { label: 'Sobre Mí', icon: 'pi pi-user', fragment: 'sobre-mi' },
+    { label: 'Contacto', icon: 'pi pi-envelope', fragment: 'contacto' }
   ];
 
   speedDialItems: MenuItem[] = [];
 
-  constructor(private readonly router: Router) {
+  constructor() {
     this.speedDialItems = this.menuItems.map(item => ({
       icon: item.icon,
       tooltipOptions: {
@@ -38,8 +36,19 @@ export class Default {
         tooltipPosition: 'left'
       },
       command: () => {
-        this.router.navigate([item.route]);
+        this.scrollToFragment(item.fragment);
       }
     }));
+  }
+
+  scrollToFragment(fragment: string): void {
+    if (fragment === 'sobre-mi') {
+      window.dispatchEvent(new CustomEvent('show-about-slide'));
+    }
+    if (!fragment) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    document.getElementById(fragment)?.scrollIntoView({ behavior: 'smooth' });
   }
 }

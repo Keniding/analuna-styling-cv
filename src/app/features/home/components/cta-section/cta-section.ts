@@ -34,7 +34,6 @@ interface Service {
 export class CtaSection implements OnInit, OnDestroy {
   visible: boolean = false;
   name: string = '';
-  email: string = '';
   phone: string = '';
   date: Date | null = null;
   selectedService: Service | null = null;
@@ -42,12 +41,12 @@ export class CtaSection implements OnInit, OnDestroy {
   minDate: Date = new Date();
 
   readonly services: Service[] = [
-    { name: 'Tratamiento Facial', value: 'facial' },
-    { name: 'Tratamiento Corporal', value: 'corporal' },
-    { name: 'Maquillaje Profesional', value: 'maquillaje' },
-    { name: 'Manicure & Pedicure', value: 'manicure' },
-    { name: 'Pestañas & Cejas', value: 'pestanas' },
+    { name: 'Estética de Uñas', value: 'unas' },
+    { name: 'Tratamientos Faciales', value: 'faciales' },
+    { name: 'Masofilaxia Corporal', value: 'corporal' },
     { name: 'Depilación', value: 'depilacion' },
+    { name: 'Estética Capilar', value: 'capilar' },
+    { name: 'Servicio a Domicilio', value: 'domicilio' },
     { name: 'Otro', value: 'otro' }
   ];
 
@@ -67,15 +66,21 @@ export class CtaSection implements OnInit, OnDestroy {
     this.visible = true;
   }
 
+  readonly whatsappNumber = '51983438583';
+
   onSubmit() {
-    console.log('Formulario enviado', {
-      name: this.name,
-      email: this.email,
-      phone: this.phone,
-      date: this.date,
-      service: this.selectedService,
-      message: this.message
-    });
+    const dateText = this.date ? this.date.toLocaleDateString('es-PE') : 'sin definir';
+    const lines = [
+      `Hola Analuna Atelier, quiero reservar una cita:`,
+      `Nombre: ${this.name}`,
+      `Teléfono: ${this.phone}`,
+      `Fecha preferida: ${dateText}`,
+      `Servicio: ${this.selectedService?.name ?? 'sin especificar'}`,
+      this.message ? `Mensaje: ${this.message}` : null
+    ].filter(Boolean);
+
+    const url = `https://wa.me/${this.whatsappNumber}?text=${encodeURIComponent(lines.join('\n'))}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
     this.visible = false;
   }
 }

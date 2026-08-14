@@ -1,4 +1,4 @@
-<section class="relative min-h-[600px] lg:min-h-[700px] bg-gradient-to-br from-primary-50 via-surface-0 to-accent-50 dark:from-surface-950 dark:via-surface-900 dark:to-surface-950 overflow-hidden">
+<section id="sobre-mi" class="relative min-h-[600px] lg:min-h-[700px] bg-gradient-to-br from-primary-50 via-surface-0 to-accent-50 dark:from-surface-950 dark:via-surface-900 dark:to-surface-950 overflow-hidden">
 
   <!-- Patrón decorativo de fondo -->
   <div class="absolute inset-0 opacity-5">
@@ -6,113 +6,223 @@
     <div class="absolute bottom-20 right-10 w-96 h-96 bg-accent-400 rounded-full blur-3xl"></div>
   </div>
 
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+  <!-- Flecha anterior -->
+  <button
+    type="button"
+    class="hidden md:flex absolute left-2 lg:left-4 top-1/2 -translate-y-1/2 z-[60] w-11 h-11 rounded-full bg-surface-0/90 dark:bg-surface-900/90 items-center justify-center shadow-lg hover:bg-surface-0 dark:hover:bg-surface-900 hover:scale-105 transition-all focus:outline-none focus:ring-2 focus:ring-primary-500"
+    aria-label="Slide anterior"
+    (click)="prevSlide()"
+  >
+    <i class="pi pi-chevron-left text-surface-700 dark:text-surface-300"></i>
+  </button>
 
-      <!-- Contenido izquierdo -->
-      <div
-        class="text-center lg:text-left"
-        pAnimateOnScroll
-        enterClass="fadeinleft"
-      >
-        <!-- Badge superior -->
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-sm font-medium mb-6">
-          <i class="pi pi-sparkles"></i>
-          <span>Cosmetología Profesional</span>
-        </div>
+  <!-- Flecha siguiente -->
+  <button
+    type="button"
+    class="hidden md:flex absolute right-2 lg:right-4 top-1/2 -translate-y-1/2 z-[60] w-11 h-11 rounded-full bg-surface-0/90 dark:bg-surface-900/90 items-center justify-center shadow-lg hover:bg-surface-0 dark:hover:bg-surface-900 hover:scale-105 transition-all focus:outline-none focus:ring-2 focus:ring-primary-500"
+    aria-label="Slide siguiente"
+    (click)="nextSlide()"
+  >
+    <i class="pi pi-chevron-right text-surface-700 dark:text-surface-300"></i>
+  </button>
 
-        <!-- Título principal -->
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-surface-900 dark:text-surface-0 mb-6 leading-tight">
-          <span class="block">Realza tu belleza</span>
-          <span class="block text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-accent-400">
-            natural y única
-          </span>
-        </h1>
+  <!-- Viewport del carrusel: recorta el track deslizante y sigue la altura del slide activo -->
+  <div
+    class="relative overflow-hidden transition-[height] duration-700 ease-in-out"
+    [style.height.px]="containerHeight"
+  >
+    <div
+      class="flex items-start transition-transform duration-700 ease-in-out"
+      [style.transform]="'translateX(-' + (activeSlide * 100) + '%)'"
+    >
+      <!-- Slide 1: Presentación -->
+      <div #slidePanel class="w-full flex-shrink-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-16 py-20 lg:py-28 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-        <!-- Descripción -->
-        <p class="text-lg sm:text-xl text-surface-600 dark:text-surface-300 mb-8 max-w-2xl mx-auto lg:mx-0">
-          Tratamientos personalizados de cosmetología integral con técnicas avanzadas y productos de alta calidad para resaltar tu belleza natural.
-        </p>
-
-        <!-- Botones de acción -->
-        <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
-          <p-button
-            label="Reservar Cita"
-            icon="pi pi-calendar"
-            [raised]="true"
-            size="large"
-            styleClass="w-full sm:w-auto"
-          />
-          <p-button
-            label="Ver Servicios"
-            icon="pi pi-arrow-right"
-            iconPos="right"
-            [outlined]="true"
-            severity="secondary"
-            size="large"
-            styleClass="w-full sm:w-auto"
-          />
-        </div>
-
-        <!-- Estadísticas -->
-        <div class="grid grid-cols-3 gap-6 mt-12 pt-12 border-t border-surface-200 dark:border-surface-700">
-          @for (stat of stats; track stat.label) {
-            <div class="text-center lg:text-left">
-              <div class="text-3xl font-bold text-primary-500 mb-1">{{ stat.value }}</div>
-              <div class="text-sm text-surface-600 dark:text-surface-400">{{ stat.label }}</div>
+          <!-- Contenido izquierdo -->
+          <div class="text-center lg:text-left">
+            <!-- Badge superior -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-sm font-medium mb-6">
+              <i class="pi pi-sparkles"></i>
+              <span>Cosmetología Dermatológica</span>
             </div>
-          }
+
+            <!-- Título principal -->
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-surface-900 dark:text-surface-0 mb-6 leading-tight">
+              <span class="block">Realza tu belleza</span>
+              <span class="block text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-accent-400">
+                natural y única
+              </span>
+            </h1>
+
+            <!-- Descripción -->
+            <p class="text-lg sm:text-xl text-surface-600 dark:text-surface-300 mb-8 max-w-2xl mx-auto lg:mx-0">
+              Elevando la belleza a través de protocolos personalizados, bioseguridad de alto estándar y técnicas de vanguardia en Lima.
+            </p>
+
+            <!-- Botones de acción -->
+            <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
+              <p-button
+                label="Reservar Cita"
+                icon="pi pi-calendar"
+                [raised]="true"
+                size="large"
+                styleClass="w-full sm:w-auto"
+                (onClick)="onReservarClick()"
+              />
+              <a href="#servicios" (click)="$event.preventDefault(); scrollToId('servicios')" class="w-full sm:w-auto">
+                <p-button
+                  label="Ver Servicios"
+                  icon="pi pi-arrow-right"
+                  iconPos="right"
+                  [outlined]="true"
+                  severity="secondary"
+                  size="large"
+                  styleClass="w-full sm:w-auto"
+                />
+              </a>
+            </div>
+
+            <!-- Estadísticas -->
+            <div class="grid grid-cols-3 gap-6 mt-12 pt-12 border-t border-surface-200 dark:border-surface-700">
+              @for (stat of stats; track stat.label) {
+                <div class="text-center lg:text-left">
+                  <div class="text-3xl font-bold text-primary-500 mb-1">{{ stat.value }}</div>
+                  <div class="text-sm text-surface-600 dark:text-surface-400">{{ stat.label }}</div>
+                </div>
+              }
+            </div>
+          </div>
+
+          <!-- Imagen derecha -->
+          <div class="relative">
+            <div class="relative z-10">
+              <!-- Sello del logo -->
+              <div class="absolute -top-8 -left-8 z-20 w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden shadow-2xl ring-4 ring-surface-0 dark:ring-surface-900">
+                <img
+                  src="assets/images/brand/logo.png"
+                  alt="Analuna Atelier"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+
+              <!-- Imagen principal con marco decorativo -->
+              <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+                <img
+                  src="assets/images/gallery/nail-08-full.jpg"
+                  alt="Nail art de Analuna Atelier"
+                  class="w-full h-[500px] lg:h-[600px] object-cover"
+                />
+                <!-- Overlay gradient -->
+                <div class="absolute inset-0 bg-gradient-to-t from-surface-900/20 to-transparent"></div>
+              </div>
+
+              <!-- Card flotante -->
+              <div class="absolute bottom-8 left-8 right-8 bg-surface-0/95 dark:bg-surface-900/95 backdrop-blur-md rounded-2xl p-6 shadow-xl">
+                <div class="flex items-center gap-4">
+                  <div class="w-12 h-12 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
+                    <i class="pi pi-shield text-primary-500 text-xl"></i>
+                  </div>
+                  <div class="flex-1">
+                    <div class="font-bold text-surface-900 dark:text-surface-0 mb-1">Bioseguridad de Alto Estándar</div>
+                    <span class="text-sm text-surface-600 dark:text-surface-400">Protocolos personalizados y técnicas de vanguardia</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Elementos decorativos -->
+            <div class="absolute -top-6 -right-6 w-24 h-24 bg-accent-200 dark:bg-accent-900/30 rounded-full blur-2xl"></div>
+            <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-primary-200 dark:bg-primary-900/30 rounded-full blur-2xl"></div>
+          </div>
         </div>
       </div>
 
-      <!-- Imagen derecha -->
-      <div
-        class="relative"
-        pAnimateOnScroll
-        enterClass="fadeinright"
-      >
-        <div class="relative z-10">
-          <!-- Imagen principal con marco decorativo -->
-          <div class="relative rounded-3xl overflow-hidden shadow-2xl">
-            <img
-              src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=800&h=1000&fit=crop"
-              alt="Tratamiento de cosmetología"
-              class="w-full h-[500px] lg:h-[600px] object-cover"
-            />
-            <!-- Overlay gradient -->
-            <div class="absolute inset-0 bg-gradient-to-t from-surface-900/20 to-transparent"></div>
-          </div>
+      <!-- Slide 2: Sobre Mí -->
+      <div #slidePanel class="w-full flex-shrink-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-16 py-20 lg:py-28 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-          <!-- Card flotante -->
-          <div class="absolute bottom-8 left-8 right-8 bg-surface-0/95 dark:bg-surface-900/95 backdrop-blur-md rounded-2xl p-6 shadow-xl">
-            <div class="flex items-center gap-4">
-              <div class="w-12 h-12 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
-                <i class="pi pi-star-fill text-primary-500 text-xl"></i>
-              </div>
-              <div class="flex-1">
-                <div class="font-bold text-surface-900 dark:text-surface-0 mb-1">Calificación Excelente</div>
-                <div class="flex items-center gap-2">
-                  <div class="flex gap-1">
-                    @for (star of stars; track star) {
-                      <i class="pi pi-star-fill text-yellow-500 text-sm"></i>
-                    }
-                  </div>
-                  <span class="text-sm text-surface-600 dark:text-surface-400">5.0 (250+ reseñas)</span>
+          <!-- Imagen izquierda -->
+          <div class="relative">
+            <img
+              src="assets/images/gallery/ana-working-full.jpg"
+              alt="Ana Claudia trabajando en Analuna Atelier"
+              class="rounded-3xl shadow-2xl w-full h-[500px] lg:h-[600px] object-cover"
+            />
+
+            <!-- Badge flotante -->
+            <div class="absolute top-8 -right-4 max-w-[230px] bg-surface-0 dark:bg-surface-900 rounded-2xl p-4 shadow-xl">
+              <div class="flex items-center gap-3">
+                <i class="pi pi-verified text-3xl text-primary-500"></i>
+                <div>
+                  <div class="font-bold text-surface-900 dark:text-surface-0">{{ name }}</div>
+                  <div class="text-sm text-surface-600 dark:text-surface-400">{{ role }}</div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- Elementos decorativos -->
-        <div class="absolute -top-6 -right-6 w-24 h-24 bg-accent-200 dark:bg-accent-900/30 rounded-full blur-2xl"></div>
-        <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-primary-200 dark:bg-primary-900/30 rounded-full blur-2xl"></div>
+          <!-- Contenido derecha -->
+          <div>
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-sm font-medium mb-4">
+              <i class="pi pi-user"></i>
+              <span>Sobre Mí</span>
+            </div>
+
+            <h2 class="text-3xl sm:text-4xl font-bold text-surface-900 dark:text-surface-0 mb-1">
+              {{ name }}
+            </h2>
+            <p class="text-primary-500 font-semibold mb-6">{{ role }}</p>
+
+            <p class="text-lg text-surface-600 dark:text-surface-300 mb-6">
+              {{ tagline }}
+            </p>
+
+            <!-- Badges -->
+            <div class="flex flex-wrap gap-2 mb-6">
+              @for (badge of badges; track badge) {
+                <span class="px-3 py-1 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-xs font-medium">
+                  {{ badge }}
+                </span>
+              }
+            </div>
+
+            <p class="text-surface-600 dark:text-surface-300 mb-8">
+              {{ bio }}
+            </p>
+
+            <p-button
+              label="Reservar una cita"
+              icon="pi pi-calendar"
+              iconPos="right"
+              [raised]="true"
+              (onClick)="onReservarClick()"
+            />
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- Scroll indicator -->
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-    <i class="pi pi-chevron-down text-surface-400 text-2xl"></i>
+  <!-- Indicadores del carrusel con barra de progreso -->
+  <div class="relative flex justify-center gap-3 pb-10">
+    @for (slide of [0, 1]; track slide) {
+      <button
+        type="button"
+        class="relative h-2 w-10 rounded-full overflow-hidden bg-surface-300/70 dark:bg-surface-600/70 focus:outline-none"
+        [attr.aria-label]="slide === 0 ? 'Ver presentación' : 'Ver sobre mí'"
+        (click)="goToSlide(slide)"
+      >
+        @if (slide === activeSlide) {
+          <div
+            class="absolute inset-y-0 left-0 bg-primary-500 rounded-full hero-slide-progress"
+            [style.animation-duration.ms]="slideDurationMs"
+          ></div>
+        } @else if (slide < activeSlide) {
+          <div class="absolute inset-0 bg-primary-300 dark:bg-primary-800 rounded-full"></div>
+        }
+      </button>
+    }
   </div>
 </section>

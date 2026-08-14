@@ -22,22 +22,33 @@ export class Footer {
   readonly currentYear = new Date().getFullYear();
 
   readonly socialLinks = [
-    { icon: 'pi pi-instagram', url: '#', label: 'Instagram' },
-    { icon: 'pi pi-facebook', url: '#', label: 'Facebook' },
-    { icon: 'pi pi-whatsapp', url: '#', label: 'WhatsApp' },
-    { icon: 'pi pi-twitter', url: '#', label: 'Twitter' },
+    { icon: 'pi pi-instagram', url: 'https://www.instagram.com/analuna_atelier1?igsh=YjFqenVmZHBhdGg0', label: 'Instagram' },
+    { icon: 'pi pi-tiktok', url: 'https://www.tiktok.com/@analuna_atelier?_r=1&_t=ZS-96VCqMly9Zc', label: 'TikTok' },
+    { icon: 'pi pi-whatsapp', url: 'https://wa.me/51983438583', label: 'WhatsApp' },
   ];
 
   readonly quickLinks = [
-    { label: 'Servicios', route: '/servicios', icon: 'pi pi-sparkles' },
-    { label: 'Portafolio', route: '/portafolio', icon: 'pi pi-images' },
-    { label: 'Sobre Mí', route: '/sobre-mi', icon: 'pi pi-user' },
-    { label: 'Contacto', route: '/contacto', icon: 'pi pi-envelope' },
+    { label: 'Servicios', route: '#servicios', icon: 'pi pi-sparkles' },
+    { label: 'Portafolio', route: '#portafolio', icon: 'pi pi-images' },
+    { label: 'Sobre Mí', route: '#sobre-mi', icon: 'pi pi-user' },
+    { label: 'Trayectoria', route: '#trayectoria', icon: 'pi pi-briefcase' },
+    { label: 'Contacto', route: '#contacto', icon: 'pi pi-envelope' },
   ];
 
+  onReservarClick(): void {
+    globalThis.dispatchEvent(new CustomEvent('open-booking-dialog'));
+  }
+
+  navigateTo(route: string): void {
+    const fragment = route.replace('#', '');
+    if (fragment === 'sobre-mi') {
+      globalThis.dispatchEvent(new CustomEvent('show-about-slide'));
+    }
+    document.getElementById(fragment)?.scrollIntoView({ behavior: 'smooth' });
+  }
+
   readonly contactInfo = [
-    { icon: 'pi pi-phone', text: '+51 999 999 999', type: 'phone' },
-    { icon: 'pi pi-envelope', text: 'contacto@analuna.com', type: 'email' },
+    { icon: 'pi pi-whatsapp', text: '+51 983 438 583', type: 'phone' },
     { icon: 'pi pi-map-marker', text: 'Lima, Perú', type: 'location' },
     { icon: 'pi pi-clock', text: 'Lun - Sáb: 9:00 - 20:00', type: 'schedule' }
   ];

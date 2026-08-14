@@ -1,4 +1,4 @@
-<footer class="border-t border-surface-200 dark:border-surface-800 bg-surface-0 dark:bg-surface-950 mt-auto">
+<footer id="contacto" class="border-t border-surface-200 dark:border-surface-800 bg-surface-0 dark:bg-surface-950 mt-auto">
   <div class="max-w-7xl mx-auto px-4 py-8">
 
     <!-- Contenido Principal del Footer -->
@@ -6,28 +6,27 @@
 
       <!-- Columna 1: Marca y Descripción (4 columnas) -->
       <div class="md:col-span-4 flex flex-col gap-4">
-        <div class="flex items-center gap-2">
-          <svg width="33" height="35" viewBox="0 0 33 35" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-8 h-8">
-            <path d="M15.5 0L31 8.75V26.25L15.5 35L0 26.25V8.75L15.5 0Z" fill="var(--primary-color)" />
-          </svg>
-          <h3 class="font-bold text-xl text-primary-500 tracking-tight">AnaLuna Styling</h3>
+        <div class="flex items-center">
+          <img src="assets/images/brand/logo.png" alt="Analuna Atelier" class="h-14 w-auto rounded-md" />
         </div>
 
         <p class="text-sm text-surface-500 dark:text-surface-400">
-          Realzando tu belleza natural con tratamientos personalizados y cuidado profesional en cosmetología integral.
+          Cosmética dermatológica y estética integral con protocolos personalizados y bioseguridad de alto estándar en Lima.
         </p>
 
         <!-- Redes Sociales con Tooltip de PrimeNG -->
         <div class="flex gap-2">
           @for (social of socialLinks; track social.label) {
-            <p-button
-              [icon]="social.icon"
-              [rounded]="true"
-              [text]="true"
-              severity="secondary"
-              [pTooltip]="social.label"
-              tooltipPosition="top"
-            />
+            <a [href]="social.url" target="_blank" rel="noopener noreferrer" [attr.aria-label]="social.label">
+              <p-button
+                [icon]="social.icon"
+                [rounded]="true"
+                [text]="true"
+                severity="secondary"
+                [pTooltip]="social.label"
+                tooltipPosition="top"
+              />
+            </a>
           }
         </div>
       </div>
@@ -39,6 +38,7 @@
           @for (link of quickLinks; track link.label) {
             <a
               [href]="link.route"
+              (click)="$event.preventDefault(); navigateTo(link.route)"
               class="flex items-center gap-2 text-sm text-surface-600 dark:text-surface-400 hover:text-primary-500 transition-colors"
               pRipple
             >
@@ -67,6 +67,7 @@
           icon="pi pi-calendar"
           styleClass="w-full mt-2"
           [raised]="true"
+          (onClick)="onReservarClick()"
         />
       </div>
     </div>
@@ -75,9 +76,9 @@
     <p-divider />
 
     <!-- Copyright y Enlaces Legales -->
-    <div class="flex flex-col md:flex-row justify-between items-center gap-4 pt-4">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4 pb-4">
       <div class="text-sm text-surface-400 text-center md:text-left">
-        <p>© {{ currentYear }} AnaLuna Styling - Todos los derechos reservados</p>
+        <p>© {{ currentYear }} Analuna Atelier - Todos los derechos reservados</p>
       </div>
 
       <div class="flex gap-4 text-xs text-surface-400">

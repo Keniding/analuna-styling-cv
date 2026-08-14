@@ -19,6 +19,10 @@
   justify-content: center;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html, body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -29,4 +33,75 @@ html, body {
 
 .app-light {
   color-scheme: light;
+}
+
+/* Animaciones de scroll (usadas por pAnimateOnScroll) */
+@keyframes scroll-fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scroll-fadeinup {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scroll-fadeinleft {
+  from { opacity: 0; transform: translateX(-28px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scroll-fadeinright {
+  from { opacity: 0; transform: translateX(28px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scroll-zoomin {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.fadein {
+  animation: scroll-fadein 0.6s ease-out both;
+}
+
+.fadeinup {
+  animation: scroll-fadeinup 0.6s ease-out both;
+}
+
+.fadeinleft {
+  animation: scroll-fadeinleft 0.6s ease-out both;
+}
+
+.fadeinright {
+  animation: scroll-fadeinright 0.6s ease-out both;
+}
+
+.zoomin {
+  animation: scroll-zoomin 0.5s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fadein, .fadeinup, .fadeinleft, .fadeinright, .zoomin {
+    animation: none !important;
+  }
+}
+
+/* Barra de progreso del carrusel del Hero */
+@keyframes hero-slide-progress-kf {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+.hero-slide-progress {
+  animation-name: hero-slide-progress-kf;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide-progress {
+    animation: none !important;
+    width: 100%;
+  }
 }
