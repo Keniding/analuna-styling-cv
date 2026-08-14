@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit, PLATFORM_ID, inject} from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import {Button, ButtonDirective} from 'primeng/button';
+import {Button} from 'primeng/button';
 import { InputText } from 'primeng/inputtext';
 import { Textarea } from 'primeng/textarea';
 import { DatePicker } from 'primeng/datepicker';
@@ -26,7 +26,6 @@ interface Service {
     Select,
     Dialog,
     FormsModule,
-    ButtonDirective,
     Tooltip
   ],
   templateUrl: './cta-section.html'
